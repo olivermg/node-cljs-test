@@ -10,6 +10,7 @@ pom.xml.asc
 .hgignore
 .hg/
 /node_modules
+/figwheel_server.log
 
 *~
 *.swp

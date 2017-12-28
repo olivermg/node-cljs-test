@@ -7,12 +7,14 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.9.946"]]
 
-  :plugins [[lein-cljsbuild "1.1.7"]]
+  :plugins [[lein-cljsbuild "1.1.7"]
+            [lein-figwheel "0.5.14"]]
 
   :clean-targets ^{:protect false} ["target"]
 
   :cljsbuild {:builds [{:id "nc-dev"
                         :source-paths ["src"]
+                        :figwheel true
                         :compiler {:main nc.core
                                    :output-to "target/nc.js"
                                    :output-dir "target"
@@ -20,4 +22,7 @@
                                    :optimizations :none
                                    :pretty-print true
                                    :source-map true
-                                   :parallel-build true}}]})
+                                   ;;;:parallel-build true
+                                   }}]}
+
+  :figwheel {})
