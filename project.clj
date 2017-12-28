@@ -1,4 +1,4 @@
-(defproject node-cljs "0.1.0-SNAPSHOT"
+(defproject nc "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
@@ -11,11 +11,13 @@
 
   :clean-targets ^{:protect false} ["target"]
 
-  :cljsbuild {:builds [{:id "node-cljs-dev"
+  :cljsbuild {:builds [{:id "nc-dev"
                         :source-paths ["src"]
-                        :compiler {:main node-cljs.core
-                                   :output-to "target/node-cljs.js"
+                        :compiler {:main nc.core
+                                   :output-to "target/nc.js"
                                    :output-dir "target"
                                    :target :nodejs
                                    :optimizations :none
-                                   :source-map true}}]})
+                                   :pretty-print true
+                                   :source-map true
+                                   :parallel-build true}}]})
