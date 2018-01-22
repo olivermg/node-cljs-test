@@ -20,8 +20,8 @@
                                    :output-dir "target"
                                    :source-map "target/nc.js.map"
                                    :target :nodejs
-                                   ;;; in order to compile a lib callable from js, we need to at least
-                                   ;;; simple optimization, otherwise the lib's exports won't be there:
+                                   ;;; in order to compile a lib callable from js, we need at least
+                                   ;;; simple optimization, otherwise the lib's exports will be missing:
                                    :optimizations :simple
                                    :pretty-print true
                                    :parallel-build true
