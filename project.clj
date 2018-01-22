@@ -15,14 +15,22 @@
   :cljsbuild {:builds [{:id "nc-dev"
                         :source-paths ["src"]
                         :figwheel true
-                        :compiler {:main nc.core
+                        :compiler {;;;:main nc.core
                                    :output-to "target/nc.js"
                                    :output-dir "target"
+                                   :source-map "target/nc.js.map"
                                    :target :nodejs
-                                   :optimizations :none
+                                   ;;; in order to compile a lib callable from js, we need to at least
+                                   ;;; simple optimization, otherwise the lib's exports won't be there:
+                                   :optimizations :simple
                                    :pretty-print true
-                                   :source-map true
-                                   ;;;:parallel-build true
+                                   :parallel-build true
+                                   #_:foreign-libs #_[{:file "./lib/jj.js"
+                                                   :provides ["jj.core"]}]
+                                   #_:modules #_{:nc {:output-to "target/nc.js"
+                                                  :entries #{"nc.core"}
+                                                  :append "module.exports = { libfn: nc.core.libfn };"
+                                                  }}
                                    }}]}
 
   :figwheel {})

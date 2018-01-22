@@ -1,12 +1,16 @@
-
-run-node:
-	NODE_PATH=./target node ii.js
+run:
+	NODE_PATH=./target:./lib node ii.js
 
 run-cljs:
 	NODE_PATH=./lib node target/nc.js
 
+
+build:
+	lein cljsbuild once
+
+
 repl:
 	rlwrap lein figwheel
 
-.PHONY: run-node run-cljs repl
 
+.PHONY: run run-node run-cljs build repl
